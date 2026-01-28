@@ -7,17 +7,23 @@ from email.mime.text import MIMEText
 from email.header import Header
 
 # ================= 🔧 配置区 (请修改这里) =================
-# 1. 数据库文件名
+# ================= 🔧 配置区 (已修改为读取机密) =================
 DB_FILE = "orders.csv"
+ENABLE_EMAIL = True 
+SMTP_SERVER = "smtp.qq.com"      
+SMTP_PORT = 465                  
 
-# 2. 邮件通知配置 (以QQ邮箱为例)
-# 如果不想开通知，把 ENABLE_EMAIL 改为 False
-ENABLE_EMAIL = True
-SMTP_SERVER = "smtp.qq.com"  # QQ邮箱服务器
-SMTP_PORT = 465  # SSL端口
-SENDER_EMAIL = "1481709797@qq.com"  # 🔴 发件人邮箱 (你的邮箱)
-PASSWORD = "暂无"
-RECEIVER_EMAIL ="1481709797@qq.com"  # 🔴 收件人邮箱 (通常也是你自己的，或者大厨的邮箱)
+# 👇 关键修改：从云端保险箱读取隐私信息
+if "email" in st.secrets:
+    SENDER_EMAIL = st.secrets["email"]["sender"]
+    PASSWORD = st.secrets["email"]["password"]
+    RECEIVER_EMAIL = st.secrets["email"]["receiver"]
+else:
+    # 防止本地运行时报错
+    SENDER_EMAIL = ""
+    PASSWORD = ""
+    RECEIVER_EMAIL = ""
+# ========================================================
 # ========================================================
 
 st.set_page_config(page_title="🏠 爱家小食堂Pro", page_icon="🍲", layout="centered")
@@ -117,4 +123,5 @@ if st.button("🚀 提交给大厨", type="primary"):
             st.warning("✅ 下单成功！(但邮件通知发送失败，请大厨手动查看后台)")
 
         st.balloons()
+
 
