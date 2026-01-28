@@ -16,7 +16,7 @@ ENABLE_EMAIL = True
 SMTP_SERVER = "smtp.qq.com"  # QQ邮箱服务器
 SMTP_PORT = 465  # SSL端口
 SENDER_EMAIL = "1481709797@qq.com"  # 🔴 发件人邮箱 (你的邮箱)
-PASSWORD = "dxqzccsknbjchaie"  # 🔴 邮箱授权码 (不是QQ密码！后面教你怎么拿)
+PASSWORD = "暂无"
 RECEIVER_EMAIL ="1481709797@qq.com"  # 🔴 收件人邮箱 (通常也是你自己的，或者大厨的邮箱)
 # ========================================================
 
@@ -117,3 +117,4 @@ if st.button("🚀 提交给大厨", type="primary"):
             st.warning("✅ 下单成功！(但邮件通知发送失败，请大厨手动查看后台)")
 
         st.balloons()
+
