@@ -26,7 +26,7 @@ SMTP_SERVER = "smtp.qq.com"
 SMTP_PORT = 465                  
 # ============================================
 
-st.set_page_config(page_title="🏠 爱家小食堂", page_icon="🍲")
+st.set_page_config(page_title="🏠 快快家族大食堂", page_icon="🍲")
 
 # --- 核心函数 ---
 def load_data():
@@ -78,7 +78,7 @@ def send_email_msg(user, dish_string):
         return False
 
 # --- 页面UI ---
-st.title("🍲 爱家小食堂 (自助餐版)")
+st.title("🍲 快快家族大食堂")
 
 # 侧边栏：大厨后台
 with st.sidebar:
@@ -107,7 +107,7 @@ menu = {
 }
 
 st.subheader("📝 请开始点餐")
-user_name = st.text_input("你的大名 (必填)大王")
+user_name = st.text_input("你的大名")
 
 # 🟢 核心修改：使用多选框 (Multiselect)
 all_selected = [] # 用来存所有选中的菜
@@ -143,5 +143,6 @@ if st.button("🚀 提交整张订单", type="primary"):
             st.success(f"✅ 下单成功！你点了 {len(all_selected)} 个菜，大厨已收到！")
         else:
             st.success("✅ 下单成功！(但邮件通知未发送，请口头提醒大厨)")
+
 
 
